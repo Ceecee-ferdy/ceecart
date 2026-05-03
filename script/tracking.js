@@ -29,7 +29,11 @@ import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
    const today = dayjs();
    const orderTime =  dayjs(order.orderTime);
    const deliveryTime = dayjs(productDetails.estimatedDeliveryTime);
-   const percentProgress = ((today - orderTime) / (deliveryTime - orderTime)) * 100
+    let percentProgress =
+  ((today.valueOf() - orderTime.valueOf()) /
+  (deliveryTime.valueOf() - orderTime.valueOf())) * 100;
+
+percentProgress = Math.max(0, Math.min(percentProgress, 100));
 
    const trackingHTML = `
           <a class="back-to-orders-link link-primary" href="orders.html">
