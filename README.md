@@ -6,7 +6,7 @@ This project focuses on building the core shopping experience from scratch, incl
 ---
 
 ## 🚀 Live Demo
-🔗 https://ceecee-ferdy.github.io/ceecart/
+🔗 https://ceecee-ferdy.github.io/CeeCart/
 
 ---
 
