@@ -1,6 +1,8 @@
 import { products } from "../data/products.js";
 import { addToCart, calculateCartQuantity } from "../data/cart.js"
 
+
+
 renderProducts()
 
 function renderProducts() {
@@ -44,7 +46,7 @@ function renderProducts() {
      filteredProducts.forEach((product) => {
        productsHTML += `
      
-      <div class="product-container">
+      <div class="product-container js-product-container">
 
       <a href="product.html?id=${product.id}" class="product-link">
       <div class="product-image-container">
@@ -60,6 +62,21 @@ function renderProducts() {
        $${((product.priceCents) / 100).toFixed(2)}
       </div>
 
+       <div class="product-quantity-container js-product-quantity-container">
+           <select class="js-quantity-select">
+              <option selected value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+
        <button class="add-button js-add-button" data-product-id="${product.id}">
         Add to Cart
         </button>
@@ -71,6 +88,9 @@ function renderProducts() {
 
      document.querySelector('.js-products-grid')
      .innerHTML = productsHTML;
+
+     
+    
 
      function updateCartQuantity() {
       const cartQuantity = calculateCartQuantity();
@@ -85,10 +105,15 @@ function renderProducts() {
         button.addEventListener('click', () => {
           const productId = button.dataset.productId;
 
-          addToCart(productId);
-          
+          // 👇 find the correct container for THIS button
+          const productContainer = button.closest('.js-product-container');
+        
+         const quantity = Number(productContainer.querySelector('.js-quantity-select').value);
+
+         addToCart(productId, quantity);
+
           updateCartQuantity();
-        })
+        });
       });
 
 
@@ -124,4 +149,56 @@ function renderProducts() {
                   window.location.href = 'index.html';
                 }
               });
+
+
+
+          const searchInput = document.querySelector('.js-search-bar');
+          const suggestionsContainer = document.querySelector('.js-search-suggestions');
+
+          if (suggestionsContainer) {
+      searchInput.addEventListener('input', () => {
+        const value = searchInput.value.toLowerCase().trim();
+
+        if (!value) {
+          suggestionsContainer.innerHTML = '';
+          return;
+        }
+
+       const matches = products.filter((product) => {
+        const nameMatch = product.name.toLowerCase().includes(value);
+
+        const keywordMatch = product.keywords.some((keyword) =>
+          keyword.toLowerCase().includes(value)
+        );
+
+        return nameMatch || keywordMatch;
+      });
+
+        let suggestionsHTML = '';
+
+        matches.slice(0, 5).forEach((product) => {
+          suggestionsHTML += `
+            <div class="search-suggestion-item" data-name="${product.name}">
+              ${product.name}
+            </div>
+          `;
+        });
+
+        suggestionsContainer.innerHTML = suggestionsHTML;
+      });
+
+      suggestionsContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('search-suggestion-item')) {
+          const name = e.target.dataset.name;
+          window.location.href = `index.html?search=${name}`;
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.ceecart-header-middle-section')) {
+          suggestionsContainer.innerHTML = '';
+        }
+      });
+}
+
 
