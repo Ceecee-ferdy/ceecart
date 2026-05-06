@@ -58,6 +58,11 @@
   color: rgb(177, 39, 4);
 }
 
+.product-quantity-container {
+  margin-bottom: 17px;
+}
+
+
 .add-button {
   background-color: rgb(67, 233, 123);
   border: 2px solid rgb(34, 197, 94); /* darker green border */
