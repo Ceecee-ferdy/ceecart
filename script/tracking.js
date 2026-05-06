@@ -1,12 +1,10 @@
+
 import { getOrder } from "../data/orders.js";
-import { getProduct } from "../data/products.js";
+import { getProduct, products } from "../data/products.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
 
  function loadPage() {
-
- 
-
 
   const url = new URL(window.location.href);
 
@@ -14,8 +12,8 @@ import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
    const productId = url.searchParams.get('productId');
   
    const order = getOrder(orderId);
-   const product = getProduct(productId);
 
+   const product = getProduct(productId);
 
   
    let productDetails;
@@ -29,11 +27,7 @@ import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
    const today = dayjs();
    const orderTime =  dayjs(order.orderTime);
    const deliveryTime = dayjs(productDetails.estimatedDeliveryTime);
-    let percentProgress =
-  ((today.valueOf() - orderTime.valueOf()) /
-  (deliveryTime.valueOf() - orderTime.valueOf())) * 100;
-
-percentProgress = Math.max(0, Math.min(percentProgress, 100));
+   const percentProgress = ((today - orderTime) / (deliveryTime - orderTime)) * 100
 
    const trackingHTML = `
           <a class="back-to-orders-link link-primary" href="orders.html">
@@ -78,5 +72,7 @@ percentProgress = Math.max(0, Math.min(percentProgress, 100));
    }
  loadPage()
 
+
+ 
 
  
