@@ -34,10 +34,11 @@ function renderProducts() {
 
    if (filteredProducts.length === 0) {
      productsHTML = `
-    <div class="no-products-message">
-      No products found for "${search}"
-    </div>
-    `;
+   <div class="no-products-message">
+    <p>No products found for "<strong>${search}</strong>"</p>
+    <button class="button-soft js-reset-search">Show all products</button>
+   </div>
+ `;
    }
 
      filteredProducts.forEach((product) => {
@@ -95,23 +96,32 @@ function renderProducts() {
 }
 
           document.querySelector('.js-search-button')
-             .addEventListener('click', () => {
-              const search = document.querySelector('.js-search-bar').value;
-              document.querySelector('.js-search-bar').value = '';
+          .addEventListener('click', () => {
+            const search = document.querySelector('.js-search-bar').value;
 
-              window.location.href = `index.html?search=${search}`
-             })
+            if (!search) return;
+
+            window.location.href = `index.html?search=${search}`;
+          });
 
 
              // make work using enter key;
              // we can also put our codes in a function and re-use them
 
-             document.querySelector('.js-search-bar')
-              .addEventListener('keydown', (event) => {
-                if(event.key === 'Enter') {
+            document.querySelector('.js-search-bar')
+            .addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
                   const search = document.querySelector('.js-search-bar').value;
-                  document.querySelector('.js-search-bar').value = '';
 
-                  window.location.href = `index.html?search=${search}`
+                  if (!search) return;
+
+                  window.location.href = `index.html?search=${search}`;
                 }
-              })
+              });
+
+              document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('js-reset-search')) {
+                  window.location.href = 'index.html';
+                }
+              });
+
