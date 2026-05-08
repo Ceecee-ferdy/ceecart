@@ -12,10 +12,24 @@ export function renderOrderSummary() {
   if (cart.length === 0) {
   document.querySelector('.js-order-summary').innerHTML = `
     <div class="empty-cart">
-      <p>Your cart is empty</p>
-      <a href="index.html" class="button-soft">Go Shopping</a>
+
+      <div class="empty-cart-icon">
+        🛒
+      </div>
+
+      <h2>Your cart feels lonely</h2>
+
+      <p>
+        Add some amazing products and come back here.
+      </p>
+
+      <a href="index.html" class="empty-cart-button">
+        Continue Shopping
+      </a>
+
     </div>
   `;
+
   return;
 }
  
