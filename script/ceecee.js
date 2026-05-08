@@ -78,8 +78,10 @@ function renderProducts() {
           </div>
 
        <button class="add-button js-add-button" data-product-id="${product.id}">
-        Add to Cart
-        </button>
+        <span class="button-text">
+          Add to Cart
+        </span>
+      </button>
 
           </div>
           
@@ -113,6 +115,24 @@ function renderProducts() {
          addToCart(productId, quantity);
 
           updateCartQuantity();
+
+          button.classList.add('added');
+
+          button.innerHTML = `
+            <span class="button-text">
+              ✓ Added
+            </span>
+          `;
+
+          setTimeout(() => {
+            button.classList.remove('added');
+
+            button.innerHTML = `
+              <span class="button-text">
+                Add to Cart
+              </span>
+            `;
+          }, 1200);
         });
       });
 
@@ -200,5 +220,8 @@ function renderProducts() {
         }
       });
 }
+
+
+
 
 
