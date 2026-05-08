@@ -5,19 +5,30 @@ import {  addToCart, calculateCartQuantity, cart} from "../data/cart.js";
 
 loadPage()
 
+
 function loadPage() {
-  
+
        updateCartQuantity(); 
 
-    if (orders.length === 0) {
+    if (!orders || orders.length === 0) {
      document.querySelector('.js-orders-grid').innerHTML = `
-      <div class="empty-orders">
-      <p>No orders yet.</p>
-      <a href="index.html" class="button-soft">Start Shopping</a>
+    <div class="empty-orders">
+     
+
+      <h2>No orders yet</h2>
+
+      <p>
+        Looks like you haven't placed any orders yet.
+      </p>
+
+      <a href="index.html" class="empty-orders-button">
+        Start Shopping
+      </a>
     </div>
-     `;
-     return;
-    }
+  `;
+
+  return;
+}
 
     let ordersHTML = ''
 
@@ -53,10 +64,20 @@ function loadPage() {
       </div>
          `;
 
+          document.querySelector('.js-orders-grid').innerHTML = ordersHTML;
+  })
+
+
+
+
         function productsListHTML(order) {
           let productsListHTML = '';
 
-          order.products.forEach((productDetails) => {
+          if (!order.products) {
+            return '';
+          }
+
+         order.products.forEach((productDetails) => {
           const product = getProduct(productDetails.productId);
           
           productsListHTML += `
@@ -95,20 +116,19 @@ function loadPage() {
 
     return productsListHTML;
   }
-
-    document.querySelector('.js-orders-grid').innerHTML = ordersHTML;
-  });
+    
+    
 
     
       function updateCartQuantity() {
         const cartQuantity = calculateCartQuantity();
 
           document.querySelector('.js-cart-quantity')
-          .innerHTML = cartQuantity;
+          .innerHTML = cartQuantity || 0;
      }
      
 
-       document.querySelectorAll('.js-buy-again').forEach((button) => {
+      document.querySelectorAll('.js-buy-again').forEach((button) => {
      button.addEventListener('click', () => {
      const productId = button.dataset.productId;
 
@@ -139,11 +159,24 @@ function loadPage() {
       }, 1000);
    })
  })
-  
+
+ document.querySelector('.js-clear-orders')
+  ?.addEventListener('click', () => {
+
+    orders.length = 0;
+
+    console.log('orders')
+
+    localStorage.removeItem('orders');
+
+    window.location.reload();
+  });
+
+ 
 }
 
 
- 
 
 
 
+    
