@@ -87,6 +87,18 @@
   transform: scale(0.98); /* subtle press effect */
 }
 
+.add-button.added {
+  background-color: rgb(22, 163, 74);
+  border: 2px solid rgb(21, 128, 61);
+  color: white;
+  transform: scale(0.97);
+}
+
+.button-text {
+  display: inline-block;
+  transition: opacity 0.2s ease;
+}
+
 @media (min-width: 1000px) {
   .products-grid {
     grid-template-columns: repeat(4, 1fr);
