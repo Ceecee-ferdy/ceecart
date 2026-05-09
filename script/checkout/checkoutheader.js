@@ -1,8 +1,8 @@
 import { cart } from '../../data/cart.js';
 
-renderCheckOutHeader();
+renderCheckoutHeader();
 
-export function renderCheckOutHeader() {
+export function renderCheckoutHeader() {
   let checkOutHeaderHtml = ''
 
   let cartQuantity = 0;
