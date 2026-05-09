@@ -1,36 +1,32 @@
-# 🛒 CeeCart – E-commerce Web App (In Progress)
+# 🛒 CeeCart – E-commerce Web App
 
-CeeCart is a simple e-commerce web application built with **HTML, CSS and JavaScript**.  
-This project focuses on building the core shopping experience from scratch, including product display and cart functionality.
+CeeCart is a responsive e-commerce web application built with **HTML, CSS and Vanilla JavaScript**.  
+The project recreates the core shopping experience of a modern online store, including product browsing, cart management, checkout flow and order tracking.
 
 ---
 
 ## 🚀 Live Demo
+
 🔗 https://ceecee-ferdy.github.io/CeeCart/
 
 ---
 
-## 📌 Project Status
-⚠️ This project is currently **in progress**.  
-The homepage and checkout system are functional, while additional features are still being developed.
+## ✨ Features
 
----
-
-## ✨ Features Implemented
-
-- 🏠 Product listing (Home page)
-- 🔍 URL-based product search
+- 🏠 Product listing page
+- 🔍 Product search with live suggestions
 - 🛒 Add to cart functionality
-- 📦 Checkout page with order summary
-- 🔄 Update item quantity
+- 📦 Checkout system with order summary
+- 🔄 Update product quantity
 - ❌ Remove items from cart
 - 💾 Persistent cart using localStorage
-- 🚚 Delivery options with business-day calculation
+- 🚚 Multiple delivery options
 - 📅 Dynamic delivery dates using Day.js
-- 💰 Dynamic payment summary
-- 🧮 Shipping & tax calculations
-- 📱 Responsive product details page
-- 🧾 Full product details page
+- 💰 Shipping, tax and total calculations
+- 🧾 Orders page with order history
+- 📱 Responsive design for mobile and desktop
+- 🛍️ Full product details page
+- 🗂️ Empty cart and empty order states
 
 ---
 
@@ -38,53 +34,59 @@ The homepage and checkout system are functional, while additional features are s
 
 - HTML5
 - CSS3 (Flexbox & Grid)
-- JavaScript (Vanilla JS)
+- JavaScript (ES6 Modules)
+- Day.js
 
 ---
 
 ## 📚 What I Learned
 
-- Managing application state using JavaScript
-- Rendering dynamic UI with reusable functions
-- URL search parameters and filtering logic
-- Handling cart logic and checkout architecture
-- Working with localStorage persistence
-- Using Day.js for date calculations
-- Building delivery systems with business-day logic
-- Calculating shipping, tax and order totals
-- Structuring a multi-page frontend project
-- Debugging real-world UI and data flow issues
+Through this project, I practiced and improved my understanding of:
 
----
-
-## 🚧 Upcoming Features
-
-- 📱 Improved mobile responsiveness
-- 🎨 UI/UX enhancements
-- 🔐 Checkout flow improvements
-- 🌐 Fetch products from a backend API
-- 🏗️ Refactor code using JavaScript classes
+- DOM manipulation
+- State management with JavaScript
+- Dynamic UI rendering
+- Reusable rendering functions
+- Cart and checkout architecture
+- URL search parameters
+- Event handling
+- localStorage persistence
+- Delivery date calculations
+- Responsive web design
+- Debugging complex frontend logic
+- Structuring scalable frontend applications
 
 ---
 
 ## 📸 Screenshots
 
-### 🧾Products Page
+### 🧾 Products Page
+
 ![Products Screenshot](images/Screenshots/productpage.png)
 
 ### 🛒 Checkout Page
+
 ![Checkout Screenshot](images/Screenshots/checkout.png)
+
+---
+
+## 🚧 Future Improvements
+
+- ❤️ Wishlist functionality
+- 🔐 Improved checkout experience
+- 🌐 Backend/API integration
+- 👤 User authentication
+- 🏗️ Refactor using JavaScript classes or React
+- 📊 Better state management architecture
 
 ---
 
 ## 🤝 Acknowledgements
 
-This project was built as part of my frontend learning journey, focusing on understanding how real-world e-commerce systems work.
+This project was built as part of my frontend development learning journey to better understand how real-world e-commerce systems are structured and implemented.
 
 ---
 
 ## 📬 Contact
 
-If you'd like to connect or give feedback, feel free to reach out.
-
----
+Feel free to connect or share feedback on the project.
