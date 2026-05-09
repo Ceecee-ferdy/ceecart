@@ -165,7 +165,6 @@ function loadPage() {
 
     orders.length = 0;
 
-    console.log('orders')
 
     localStorage.removeItem('orders');
 
