@@ -34,14 +34,28 @@ function renderProducts() {
     })
   }
 
-   if (filteredProducts.length === 0) {
-     productsHTML = `
-   <div class="no-products-message">
-    <p>No products found for "<strong>${search}</strong>"</p>
-    <button class="button-soft js-reset-search">Show all products</button>
-   </div>
- `;
-   }
+  if (filteredProducts.length === 0) {
+  productsHTML = `
+    <div class="no-products-message">
+
+      <div class="no-products-icon">
+        🔍
+      </div>
+
+      <h2>No products found</h2>
+
+      <p>
+        We couldn’t find anything for
+        "<strong>${search}</strong>"
+      </p>
+
+      <button class="reset-search-button js-reset-search">
+        Browse All Products
+      </button>
+
+    </div>
+  `;
+}
 
      filteredProducts.forEach((product) => {
        productsHTML += `
