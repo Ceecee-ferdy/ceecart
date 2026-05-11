@@ -104,8 +104,20 @@ export function renderPaymentSummary() {
 
      document.querySelector('.js-place-order')
       .addEventListener('click', async () => {
-         if (cart.length === 0) {
-        alert('Your cart is empty.');
+        if (cart.length === 0) {
+
+        const messageContainer = document.querySelector('.js-empty-cart-message');
+
+        messageContainer.innerHTML = `
+          <div class="empty-cart-alert">
+            Your cart is empty.
+          </div>
+        `;
+
+        setTimeout(() => {
+          messageContainer.innerHTML = '';
+        }, 2500);
+
         return;
       }
 
